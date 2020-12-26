@@ -27,7 +27,8 @@
 }
 
 .c-chat__bubble{
-    background-color: #0bd0b5;
+    background-color: #3bc9b4;
+    font-weight: 600;
     border-radius: 4px;
     color: #fff;
     font-size: 14px;

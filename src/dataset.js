@@ -8,7 +8,7 @@ const defaultDataset = {
         ],
         'question': "こんにちは！東進衛生予備校麻生交差点前校です。該当するお問い合わせを選択肢からお選びください"
     }, 
-    "businessHour":{
+    "businessHours":{
         answers:[
             {content:"本日の開校時間を知りたい", nextId:"displayBussinessHours"},
             {content:"お好きな開校時間を調べる", nextId:"displayBussinessHours"}
@@ -17,7 +17,7 @@ const defaultDataset = {
     },
     "displayBussinessHours":{
         answers:[
-            {content:"最初の画面に戻る"}
+            {content:"最初の画面に戻る",nextId:'init'}
         ],
         question:"開校時間は〇〇です"
     },

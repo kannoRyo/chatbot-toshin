@@ -1,6 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import './assets/styles/style.css'
-import {Answers} from './components/index'
+import {
+  Answers,
+  Chats,
+} from './components/index'
 import defaultDataset from './dataset'
 
 
@@ -11,15 +14,30 @@ const App = ()=> {
   const [dataset, setDetaset] = useState(defaultDataset)
   const [open, setOpen] = useState(false)
 
+  const initAnswer = ()=>{
+    const initAnswer = dataset[currentId].answers
+    setAnswers(initAnswer)
+  }
+  
+  const  initChats = ()=>{
+    const initQuestion = {
+      text: dataset[currentId].question ,
+      type: 'question'
+    }
+    const newChats  = chats.push(initQuestion)
+    // setChats(newChats)
+    // console.log(chats)
+  }
+
   useEffect(()=>{
-      const initAnswer = dataset[currentId].answers
-      console.log(initAnswer)
-      setAnswers(initAnswer)
+    initChats()
+    initAnswer()
   },[])
 
   return (
     <section className="c-section">
       <div className="c-box">
+        <Chats chats={chats}/>
         <Answers answers={answers}/>
       </div>
     </section>
