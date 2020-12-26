@@ -24,7 +24,6 @@
     flex-flow: column;
     justify-content: flex-end;
     height: 220px;
-    background-color: red;
 }
 
 .c-chat__bubble{
