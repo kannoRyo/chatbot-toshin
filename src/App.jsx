@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useCallback} from 'react'
 import './assets/styles/style.css'
 import {
   Answers,
@@ -18,15 +18,19 @@ const App = ()=> {
     const initAnswer = dataset[currentId].answers
     setAnswers(initAnswer)
   }
+
+  const addChat = useCallback((chat)=>{
+    setChats(prevChats=>{
+      return [...prevChats, chat]
+    })
+  },[])
   
   const  initChats = ()=>{
     const initQuestion = {
       text: dataset[currentId].question ,
       type: 'question'
     }
-    const newChats  = chats.push(initQuestion)
-    // setChats(newChats)
-    // console.log(chats)
+    addChat(initQuestion)
   }
 
   useEffect(()=>{
@@ -34,11 +38,29 @@ const App = ()=> {
     initAnswer()
   },[])
 
+  const nextDisplayQuestion = (nextId)=>{
+    addChat({
+      text: dataset[nextId].question,
+      type:'question'
+    })
+    setcurrentId(nextId)
+    setAnswers(dataset[nextId].answers)
+  }
+
+  const selectAnswer = (selectedAnswer, nextId)=>{
+    addChat({
+      text: selectedAnswer,
+      type:'answer'
+    })
+
+    nextDisplayQuestion(nextId)
+  }
+
   return (
     <section className="c-section">
       <div className="c-box">
         <Chats chats={chats}/>
-        <Answers answers={answers}/>
+        <Answers answers={answers} selectAnswer={selectAnswer}/>
       </div>
     </section>
   );

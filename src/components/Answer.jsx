@@ -16,10 +16,10 @@ const useStyle = makeStyles({
 })
 
 
-const Answer = ({content})=>{
+const Answer = ({content,selectAnswer,nextId})=>{
     const classes = useStyle()
     return(
-        <Button variant="outlined" className={classes.button}>{content}</Button>
+        <Button variant="outlined" className={classes.button} onClick={()=>selectAnswer(content,nextId)}>{content}</Button>
     )
 }
 
