@@ -3,6 +3,7 @@ import './assets/styles/style.css'
 import {
   Answers,
   Chats,
+  FormDialog
 } from './components/index'
 import defaultDataset from './dataset'
 
@@ -13,12 +14,24 @@ const App = ()=> {
   const [currentId, setcurrentId] = useState('init')
   const [dataset, setDetaset] = useState(defaultDataset)
   const [open, setOpen] = useState(false)
+  const [isExam, setIsExam] = useState(false)
 
   const addChat = useCallback((chat)=>{
     setChats(prevChats=>{
       return [...prevChats, chat]
     })
   },[])
+
+  const handleClickOpen = ()=>{
+    setOpen(true)
+  }
+
+  const handleClickClose = ()=>{
+    setOpen(false)
+    if(isExam === true){
+      setIsExam(false)
+    }
+  }
 
   const initAnswer = ()=>{
     const initAnswer = dataset[currentId].answers
@@ -56,6 +69,13 @@ const App = ()=> {
     switch(true){
       case (selectedAnswer === 'init'):
         break;
+        case (nextId === 'contact'):
+          if(currentId === 'practiceExam'){
+            setIsExam(true)
+          }
+          handleClickOpen()
+        nextDisplayQuestion('init')
+        break
       case (nextId === 'https://www.toshin.com/exams/'):
         nextDisplayQuestion('practiceExam')
         const a2 = document.createElement('a')
@@ -89,6 +109,7 @@ const App = ()=> {
       <div className="c-box">
         <Chats chats={chats}/>
         <Answers answers={answers} selectAnswer={selectAnswer}/>
+        <FormDialog open={open} handleClickClose={handleClickClose} isExam={isExam}/>
       </div>
     </section>
   );

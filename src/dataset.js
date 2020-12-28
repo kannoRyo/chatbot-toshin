@@ -23,7 +23,7 @@ const defaultDataset = {
     },
     "practiceExam":{
         answers:[
-            {content:'ご申し込みする（お問い合わせ）', nextId:"Form表示"},
+            {content:'ご申し込みする（お問い合わせ）', nextId:"contact"},
             {content:'最初の画面に戻る', nextId:"init"}
         ],
         question:"別タブにてホームページへご案内いたします。ご申し込みの場合はお問い合わせお願いいたします。"
@@ -31,7 +31,7 @@ const defaultDataset = {
     "other":{
         answers:[
             {content:"校舎公式HPを見たい", nextID:'サイトのURL'},
-            {content:"お問い合わせしたい", nextId:"Form表示"}
+            {content:"お問い合わせしたい", nextId:"contact"}
         ],
         question:"ご希望する方を選択してください"
     }
