@@ -2,8 +2,8 @@ const defaultDataset = {
     'init':{
         'answers':[
             {content:"開校時間が知りたい", nextId: "businessHours"},
-            {content:"東進学力POSを開きたい", nextId:"POSのURL"},
-            {content:"直近の模試を知りたい", nextId: "practiceExam"},
+            {content:"東進学力POSを開きたい", nextId:"https://www.toshin.com/pos/"},
+            {content:"直近の模試を知りたい(ご申し込み)", nextId: "https://www.toshin.com/exams/"},
             {content:"その他(お問い合わせなど)", nextId:"other"},
         ],
         'question': "こんにちは！東進衛生予備校麻生交差点前校です。該当するお問い合わせを選択肢からお選びください"
@@ -23,22 +23,17 @@ const defaultDataset = {
     },
     "practiceExam":{
         answers:[
-            {content:'1年', nextId:"displayPracticeExam"},
-            {content:'2年', nextId:"displayPracticeExam"},
-            {content:'3年', nextId:"displayPracticeExam"}
+            {content:'ご申し込みする（お問い合わせ）', nextId:"Form表示"},
+            {content:'最初の画面に戻る', nextId:"init"}
         ],
-        question:"学年を教えてください"
-    },
-    "displayPracticeExam":{
-        answers:[{content:"最初の画面に戻る",nextId: "init"}],
-        question:"直近の模試は〇〇（■/✕）です"
+        question:"別タブにてホームページへご案内いたします。ご申し込みの場合はお問い合わせお願いいたします。"
     },
     "other":{
         answers:[
-            {content:"公式サイトを見たい", nextID:'サイトのURL'},
+            {content:"校舎公式HPを見たい", nextID:'サイトのURL'},
             {content:"お問い合わせしたい", nextId:"Form表示"}
         ],
-        questio:"ご希望する方を選択してください"
+        question:"ご希望する方を選択してください"
     }
 
 }
