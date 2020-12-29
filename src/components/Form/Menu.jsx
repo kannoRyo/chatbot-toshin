@@ -18,27 +18,24 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const ExamMenu = ({menuOpen,handleMenuToogle,examination,handleMenuChange})=>{
+const ExamMenu = ({menuOpen,handleMenuToogle,value,handleMenuChange,label,menus,style})=>{
     const classes = useStyles();
     return(
         <>
-            <FormControl className={classes.formControl} style={{width:'100%', margin:'0'}}>
-                <InputLabel id="demo-controlled-open-select-label">模試名</InputLabel>
+            <FormControl className={classes.formControl} style={style}>
+                <InputLabel id="demo-controlled-open-select-label">{label}</InputLabel>
                 <Select
                 labelId="demo-controlled-open-select-label"
                 id="demo-controlled-open-select"
                 open={menuOpen}
                 onClose={handleMenuToogle}
                 onOpen={handleMenuToogle}
-                value={examination}
+                value={value}
                 onChange={handleMenuChange}
                 >
-                <MenuItem value="">
-                    <em>模試を選択する</em>
-                </MenuItem>
                 {
-                    examinations.map((exam)=>{
-                    return <MenuItem value={exam} >{exam}</MenuItem>
+                    menus.map((menu,i)=>{
+                    return <MenuItem value={menu} key={i}>{menu}</MenuItem> 
                     })
                 }
                 </Select>

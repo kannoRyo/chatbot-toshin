@@ -76,7 +76,11 @@ const App = ()=> {
           handleClickOpen()
         nextDisplayQuestion('init')
         break
-      case (nextId === 'https://www.toshin.com/exams/'):
+      case (　nextId === 'https://www.toshin.com/exams/'):
+        addChat({
+          text: "HPを別タブにて開きます",
+          type:'question'
+        })
         nextDisplayQuestion('practiceExam')
         const a2 = document.createElement('a')
         a2.href =  nextId
@@ -84,6 +88,7 @@ const App = ()=> {
         setTimeout(()=>{
           a2.click()
         },2000)
+        console.log('click')
         break;
       case (/^https:*/.test(nextId)):
         const a = document.createElement('a')
