@@ -3,10 +3,13 @@ import './assets/styles/style.css'
 import {
   Answers,
   Chats,
-  FormDialog
+  FormDialog,
+  DatePicker
 } from './components/index'
 import defaultDataset from './dataset'
+import {businessHourArray} from './utils/dayjs.js'
 
+const dayjs = require('dayjs')
 
 const App = ()=> {
   const [chats, setChats] = useState([])
@@ -15,12 +18,20 @@ const App = ()=> {
   const [dataset, setDetaset] = useState(defaultDataset)
   const [open, setOpen] = useState(false)
   const [isExam, setIsExam] = useState(false)
+  const [date, setDate] = useState('')
 
   const addChat = useCallback((chat)=>{
     setChats(prevChats=>{
       return [...prevChats, chat]
     })
   },[])
+
+  const todayBusiinessHour = ()=>{
+    const today = dayjs().add(3, 'days').format('MM/DD') 
+    console.log(today)
+    const businessHour = businessHourArray[today] 
+    return businessHour
+  }
 
   const handleClickOpen = ()=>{
     setOpen(true)
@@ -75,7 +86,29 @@ const App = ()=> {
           }
           handleClickOpen()
         nextDisplayQuestion('init')
-        break
+        break;
+
+      case ( nextId === "displaySelectedBussinessHours"): // 未実装
+        addChat({
+          text:'未実装です（使えません）',
+          type:'question'
+        })
+        nextDisplayQuestion('businessHours')
+        break;
+      case ( nextId === "displayTodayBussinessHours"):
+        addChat({
+          text: selectedAnswer,
+          type:'answer'
+        })
+        const todayBusinessHour = todayBusiinessHour()
+        setTimeout(()=>{
+          addChat({
+            text: `${todayBusinessHour}`,
+            type:'question'
+          })
+          nextDisplayQuestion('businessHours')
+        },750)
+        break;
       case (　nextId === 'https://www.toshin.com/exams/'):
         addChat({
           text: "HPを別タブにて開きます",

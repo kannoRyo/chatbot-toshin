@@ -10,8 +10,9 @@ const defaultDataset = {
     }, 
     "businessHours":{
         answers:[
-            {content:"本日の開校時間を知りたい", nextId:"displayBussinessHours"},
-            {content:"お好きな開校時間を調べる", nextId:"displayBussinessHours"}
+            {content:"本日の開校時間を知りたい", nextId:"displayTodayBussinessHours"},
+            {content:"お好きな開校時間を調べる", nextId:"displaySelectedBussinessHours"},
+            {content:"最初の画面に戻る",nextId:'init'}
         ],
         question:'ご希望の日付をタップしてください'
     },

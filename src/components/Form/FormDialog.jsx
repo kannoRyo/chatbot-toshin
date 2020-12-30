@@ -10,8 +10,6 @@ import {
     subjectsArray,
     examinations,
     grades,
-    socialStudiesSunbjects,
-    scienceSubjects
 } from './ExamFormPart'
 
 import TextInput from './TextInput'
