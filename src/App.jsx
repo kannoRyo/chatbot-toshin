@@ -28,7 +28,6 @@ const App = ()=> {
 
   const todayBusiinessHour = ()=>{
     const today = dayjs().add(3, 'days').format('MM/DD') 
-    console.log(today)
     const businessHour = businessHourArray[today] 
     return businessHour
   }
@@ -121,7 +120,6 @@ const App = ()=> {
         setTimeout(()=>{
           a2.click()
         },2000)
-        console.log('click')
         break;
       case (/^https:*/.test(nextId)):
         const a = document.createElement('a')

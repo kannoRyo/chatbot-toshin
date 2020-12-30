@@ -23,7 +23,7 @@ const useStyle = makeStyles({
 })
 
 const FormDialog = ({open,isExam,handleClickClose})=> {  
-    const url = "https://hooks.slack.com/services/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" //Slack URL
+    const url = "https://hooks.slack.com/services/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" //Slack URL
     const classes = useStyle()
     
     const [name,setName] = useState('')
@@ -97,18 +97,18 @@ const FormDialog = ({open,isExam,handleClickClose})=> {
         const subjects = getSubjects()
         const nomalText={
             text: `お問い合わせがありました\n\n`+
-                `お名前: ${name}\n`+
-                `学年: ${grade}`+
-                `電話番号: ${phone}\n`+
-                `お問い合わせ内容: ${description}\n`
+                `●お名前: ${name}\n`+
+                `●学年: ${grade}`+
+                `●電話番号: ${phone}\n`+
+                `●お問い合わせ内容: ${description}\n`
         }       
         const examText={
             text: `模試のお問い合わせがありました\n\n`+
-                `お名前: ${name}\n`+
-                `学年: ${grade}`+
-                `模試名: ${examination}\n`+
-                `受験科目: ${subjects}\n` +
-                `伝えておきたいこと : ${description} `
+                `●お名前: ${name}\n`+
+                `●学年: ${grade}\n`+
+                `●模試名: ${examination}\n`+
+                `●受験科目: ${subjects}\n` +
+                `●伝えておきたいこと : ${description} `
         }       
         
         const payload = (isExam) ? examText : nomalText
